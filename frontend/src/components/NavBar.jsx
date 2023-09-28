@@ -5,7 +5,7 @@ function Navbar() {
     <header>
       <nav className="flex justify-around items-center bg-secondary text-accent font-bold h-16">
         <NavLink to="/research">
-          <p>Recherche</p>
+          <p>Market</p>
         </NavLink>
         <NavLink to="/" className="">
           TWINDER

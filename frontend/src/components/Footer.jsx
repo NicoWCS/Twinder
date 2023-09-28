@@ -4,9 +4,8 @@ function Footer() {
   return (
     <div className="bg-secondary font-bold h-16 flex justify-around items-center text-accent">
       <Link to="/about">
-        <p>Conditions Générales pour polisson</p>
+        <p>CGU</p>
       </Link>
-      <p>Remote 2023</p>
     </div>
   );
 }
