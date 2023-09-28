@@ -51,14 +51,12 @@ const edit = (req, res) => {
 };
 
 const add = (req, res) => {
-  const item = req.body;
-
-  // TODO validations (length, format...)
+  const { profilId } = req.params;
 
   models.match
-    .insert(item)
+    .insert(profilId)
     .then(([result]) => {
-      res.location(`/items/${result.insertId}`).sendStatus(201);
+      res.location(`/match/${result.profilId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);

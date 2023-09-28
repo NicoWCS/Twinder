@@ -10,9 +10,9 @@ router.get("/user", userControllers.browse);
 router.put("/user/:id", userControllers.edit);
 
 router.get("/profil", profilControllers.browse);
-router.post("/profil", profilControllers.add);
 router.delete("/profil/:id", profilControllers.destroy);
 
 router.get("/match", matchControllers.browse);
+router.post("/match", matchControllers.add);
 
 module.exports = router;

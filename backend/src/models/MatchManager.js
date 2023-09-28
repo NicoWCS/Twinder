@@ -5,10 +5,11 @@ class MatchManager extends AbstractManager {
     super({ table: "match" });
   }
 
-  insert(item) {
-    return this.database.query(`insert into ${this.table} (title) values (?)`, [
-      item.title,
-    ]);
+  insert(profilId) {
+    return this.database.query(
+      `insert into ${this.table} (fav, user_id, profil_id) values (1, 1, ?)`,
+      [profilId]
+    );
   }
 
   update(item) {

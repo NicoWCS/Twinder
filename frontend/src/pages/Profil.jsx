@@ -38,8 +38,8 @@ function Profil() {
         </p>
       </div>
       <div className="flex justify-around items-center text-accent flex-wrap mt-8 mb-8">
-        <p>Age: {info.age}</p>
-        <p>Pseudo: {info.pseudo} </p>
+        <p> Age: {info.age} </p>
+        <p> Pseudo: {info.pseudo} </p>
         <p> Détails : {info.description} </p>
       </div>
 
@@ -47,15 +47,23 @@ function Profil() {
         <button
           type="button"
           className="h-12 w-28 bg-accent text-primary rounded-2xl mt-10 mb-10"
+          onClick={() => document.getElementById("modal_tag").showModal()}
         >
           Match récents
         </button>
-        <button
-          type="button"
-          className="h-12 w-28 bg-accent text-primary rounded-2xl mt-10 mb-10"
-        >
-          Recherche
-        </button>
+        <dialog id="modal_tag" className="modal">
+          <form method="dialog" className="modal-box bg-neutral-100">
+            <h3 className="font-bold text-lg text-center text-accent">
+              On revient dire coucou ?{" "}
+            </h3>
+            <p className="py-4 flex flex-wrap justify-around">{}</p>
+            <div className="modal-action flex justify-center ">
+              <button type="submit" className="btn text-neutral bg-primary">
+                Retour
+              </button>
+            </div>
+          </form>
+        </dialog>
       </div>
     </div>
   );
