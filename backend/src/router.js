@@ -7,6 +7,7 @@ const profilControllers = require("./controllers/profilControllers");
 const matchControllers = require("./controllers/matchControllers");
 
 router.get("/user", userControllers.browse);
+router.get("/user/:id", userControllers.read);
 router.put("/user/:id", userControllers.edit);
 
 router.get("/profil", profilControllers.browse);

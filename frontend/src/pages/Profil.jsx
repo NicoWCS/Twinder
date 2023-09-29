@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState, useEffect } from "react";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import axios from "axios";
@@ -6,6 +7,11 @@ import profil from "../assets/borat.webp";
 function Profil() {
   const [info, setInfo] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [formData, setFormData] = useState({
+    age: 40,
+    pseudo: "Bad rabbit",
+    description: "Et un repo pété sur Github, un ! ",
+  });
 
   useEffect(() => {
     axios
@@ -28,19 +34,68 @@ function Profil() {
     return <div>Une erreur s'est produite lors du chargement des données.</div>;
   }
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    axios
+      .put(`http://localhost:8000/user`, formData)
+      .then((res) => {
+        setInfo(res.data);
+      })
+      .catch((error) => {
+        console.error("La mise à jour a échoué :", error);
+      });
+  };
+
   return (
     <div>
       <div className="flex flex-col justify-center items-center ">
         <img src={profil} alt="Oups" className="h-40 rounded-full mt-8 mb-8" />
         <p className="flex text-center text-accent">
           {" "}
-          Bienvenue, <br /> {info.name}{" "}
+          Bienvenue, <br /> {info.name || " Weird Cheap Student"}{" "}
         </p>
       </div>
-      <div className="flex justify-around items-center text-accent flex-wrap mt-8 mb-8">
-        <p> Age: {info.age} </p>
-        <p> Pseudo: {info.pseudo} </p>
-        <p> Détails : {info.description} </p>
+      <div className="flex justify-center">
+        <div className="bg-primary p-8 rounded-lg shadow-md w-2/3 mt-8 mb-8">
+          <form onSubmit={handleSubmit} className="flex flex-col">
+            <label className="font-bold mb-2 text-accent">Age:</label>
+            <input
+              type="number"
+              name="age"
+              value={formData.age}
+              onChange={handleInputChange}
+              className="border border-gray-400 rounded p-2 mb-4"
+            />
+            <label className="font-bold mb-2 text-accent">Pseudo:</label>
+            <input
+              type="text"
+              name="pseudo"
+              value={formData.pseudo}
+              onChange={handleInputChange}
+              className="border border-gray-400 rounded p-2 mb-4"
+            />
+            <label className="font-bold mb-2 text-accent">Un petit mot ?</label>
+            <input
+              type="text"
+              name="description"
+              value={formData.description}
+              onChange={handleInputChange}
+              className="border border-gray-400 rounded p-2 h-20 mb-4"
+            />
+            <button type="submit" className="bg-accent text-white rounded p-2 ">
+              Mettre à jour
+            </button>
+          </form>
+        </div>
       </div>
 
       <div className="flex justify-around items-center">

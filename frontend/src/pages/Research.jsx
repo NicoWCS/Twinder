@@ -25,32 +25,31 @@ function Research() {
     if (filter === "" || filter === "RAF") {
       return true;
     }
-
     return tronche.tag === filter;
   });
 
   return (
-    <div>
+    <div className="p-4">
       <div className="flex justify-center h-28 pt-5 pb-5">
-        <img src={heart} alt="Import foireux" />
-        <img src={heart} alt="Import foireux" />
+        <img src={heart} alt="Import foireux" className="w-10 h-10" />
+        <img src={heart} alt="Import foireux" className="w-10 h-10" />
       </div>
-      <div className="flex justify-center mt-3 mb-3">
+      <div className="flex justify-center my-3">
         <select
-          className="select w-1/2 max-w-xs bg-accent"
+          className="select w-1/2 max-w-xs bg-accent p-2 rounded"
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
         >
           <option value="">Une pref ?</option>
-          <option value="sourire">sourire</option>
-          <option value="sobre">sobre</option>
-          <option value="atypique">atypique</option>
+          <option value="sourire">Sourire</option>
+          <option value="sobre">Sobre</option>
+          <option value="atypique">Atypique</option>
           <option value="RAF">RAF</option>
         </select>
       </div>
       <div className="flex flex-wrap justify-around items-center">
         {filteredTwin.map((tronche) => (
-          <div key={tronche.id}>
+          <div key={tronche.id} className="mb-4">
             <Card
               id={tronche.id}
               photo={tronche.photo}

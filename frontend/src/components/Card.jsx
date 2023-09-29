@@ -24,11 +24,11 @@ function Card({ id, photo, name, age, description, onDelete }) {
 
   return (
     <div>
-      <div className="h-[16rem] w-[10rem] flex flex-col justify-around items-center bg-primary text-accent mt-2 mb-2 rounded-2xl">
+      <div className="h-[20rem] w-[16rem] flex flex-col justify-around items-center bg-primary text-accent mt-2 mb-2 rounded-2xl">
         <img
-          src={`../../../backend/public/assets/${photo}`}
+          src={photo}
           alt="Tiens ! Un soucis d'import "
-          className="h-20 w-20 rounded-full"
+          className="h-40 w-40 rounded-2xl"
         />
         <div className="flex flex-col justify-center items-center">
           <div> {name} </div>
@@ -37,12 +37,10 @@ function Card({ id, photo, name, age, description, onDelete }) {
         </div>
         <div className="">
           <button type="button" className="mr-5" onClick={handleMatch}>
-            {" "}
-            ✅{" "}
+            ✅
           </button>
           <button type="button" className="ml-5" onClick={handleDelete}>
-            {" "}
-            ❌{" "}
+            ❌
           </button>
         </div>
       </div>
